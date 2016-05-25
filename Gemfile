@@ -38,6 +38,10 @@ end
 # Use unicorn as the app server
 # gem 'unicorn'
 
+gem 'carrierwave', '~> 0.10.0'
+
+gem 'mini_magick', '~> 4.3'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
