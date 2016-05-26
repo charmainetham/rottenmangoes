@@ -3,6 +3,10 @@ before_action :require_admin
 
   
 
+  def index
+    @user = User.page(params[:page]).per(5).order("name")
+  end
+  
   def require_admin
     unless current_user.admin?
       redirect_to root_path

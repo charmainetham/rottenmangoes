@@ -1,0 +1,12 @@
+<h1> Welcome to the Admin Page</h1>
+<hr>
+<%= paginate @users %>
+<% @users.each do |user| %>
+  <li>
+    <h3><%= user.firstname%> <%= user.lastname%></h3>
+    <p><%= user.email%></p>
+  </li>
+<% end %>
+<hr>
+<%= link_to "Back to movie page", movies_path %>
+<hr>

@@ -43,6 +43,9 @@ gem 'carrierwave', '~> 0.10.0'
 
 gem 'mini_magick', '~> 4.3'
 
+gem 'kaminari'
+
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
