@@ -1,4 +1,7 @@
-class Admin::UsersController < Admin::AdminController
+class Admin::UsersController < ApplicationController
+
+  before_filter :restrict_access
+
   def index
     @users = User.order(:firstname).page(params[:page]).per(10)
   end
@@ -34,7 +37,6 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def destroy
-    puts "WELCOME"
     @user = User.find(params[:id])
     if @user.destroy
       flash[:success] = "User deleted"
@@ -43,6 +45,13 @@ class Admin::UsersController < Admin::AdminController
   end
 
   protected
+
+  def restrict_access
+    if !admin? 
+      flash[:alert] = "You must be an admin to view!"
+      redirect_to root_path
+    end
+  end
 
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, :admin)

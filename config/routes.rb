@@ -1,13 +1,18 @@
 RottenTomatoes::Application.routes.draw do
   
   resources :movies do 
-    resources :reviews, only: [:new, :create]
+    resources :reviews
   end
-  resources :users, only: [:index, :new, :create]
+  
+  resources :users, only: [:show, :new, :create]
+  
   resources :sessions, only: [:new, :create, :destroy]
-  root to: 'movies#index'
 
   namespace :admin do
     resources :users
   end
+
+  root to: 'movies#index'
+
 end
+

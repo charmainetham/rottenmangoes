@@ -1,5 +1,13 @@
-<h1>Rotten Mangoes</h1>
-<%= link_to "Submit a movie!", new_movie_path %>
+<h1>Rotten Mangoes HELLO!!</h1>
+
+<p> <%= form_tag( movies_path, method: "get") do %>
+  <%=text_field_tag :search, params[:search], placeholder: "Search" %>
+  <%= submit_tag "Search", :name => nil %>
+<% end %>
+</p>
+
+<p><%= link_to "Submit a movie!", new_movie_path %></p>
+
 <hr>
 <% @movies.each do |movie| %>
   <%= link_to image_tag(movie.avatar, height: '160', width: '260'), movie_path(movie) %>
@@ -10,4 +18,7 @@
   <p><%= movie.review_average %>/10</p>
   <hr>
 <% end %>
+
+
+
 
