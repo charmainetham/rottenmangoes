@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-
   def new
     @user = User.new
   end
@@ -18,10 +17,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+  end
+
 protected
 
   def user_params
     params.require(:user).permit(:email, :firstname, :lastname, :password, :password_confirmation, {avatars: []})
   end
+
 
 end

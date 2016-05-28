@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to movies_path, notice: "Welcome back, #{user.firstname}!"
     else
-      flash.now[:alert] = "Log in failed..."s
+      flash.now[:alert] = "Log in failed..."
       render :new
     end
   end

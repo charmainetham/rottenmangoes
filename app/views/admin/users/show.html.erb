@@ -1,0 +1,12 @@
+<h1>Hollo World </h1>
+
+<h4>Email: <%= @user.email%> (
+ <% if current_user.admin? %>
+ <%= link_to "Edit", edit_admin_user_path%>
+ <% end %>, <%= link_to "Delete", admin_user_path(@user), method: :delete, data: {confirm: "You sure?"} %>)
+</h4>
+
+<h4>First name: <%= @user.firstname%></h4>
+<h4>Last name: <%= @user.lastname%></h4>
+
+<h4>Created on: <%= @user.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%B %d, %Y") %></h4>
