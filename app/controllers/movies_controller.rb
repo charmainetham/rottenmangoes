@@ -1,12 +1,14 @@
 class MoviesController < ApplicationController
   def index
-  if params[:search]
-    @movies = Movie.search(params[:search])
-  else
     @movies = Movie.all
+    @movies = @movies.with_title_or_director(params[:term]) if params[:term].present?
+    @movies = @movies.with_title(params[:title]) if params[:title].present?
+    @movies = @movies.with_director(params[:director]) if params[:director].present?
+    @movies = @movies.under_x_min(90) if params[:duration] == "2"
+    @movies = @movies.over_x_min(90).under_x_min(120) if params[:duration] == "3"
+    @movies = @movies.over_x_min(120) if params[:duration] == "4"
   end
 
-  end
 
   def show
     @movie = Movie.find(params[:id])
