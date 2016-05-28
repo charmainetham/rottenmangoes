@@ -38,10 +38,10 @@ class Admin::UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    if @user.destroy
+      UserMailer.goodbye_email(@user).deliver
       flash[:success] = "User deleted"
+      @user.destroy
       redirect_to admin_users_path
-    end
   end
 
   protected

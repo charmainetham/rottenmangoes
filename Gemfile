@@ -46,6 +46,8 @@ gem 'mini_magick', '~> 4.3'
 gem 'kaminari'
 
 gem 'faker'
+
+gem "letter_opener"
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
