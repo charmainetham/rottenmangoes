@@ -1,11 +1,18 @@
 <%= form_tag("/movies", method: "get") do %>
+<div class = "search-bar">
   <p>
     <%= label_tag(:term, "Search:") %>
-    <%= text_field_tag(:term, nil, :placeholder =>"by title or director") %>
+    <%= text_field_tag(:term, nil, class: "searchfieldclass",:placeholder =>"by title or director") %>
+      <%= label_tag(:duration, "Search by duration:") %>
+    </span>
+    <span class= "select">
+    <%= select_tag(:duration, options_for_select([['All', 1], ['Under 90 minutes', 2], ['Between 90 and 120 minutes', 3], ['Over 120 minutes', 4]])) %>
+    </span>
   </p>
-  <p>
-  <%= label_tag(:duration, "Search by duration:") %>
-  <%= select_tag(:duration, options_for_select([['All', 1], ['Under 90 minutes', 2], ['Between 90 and 120 minutes', 3], ['Over 120 minutes', 4]])) %>
-  </p>
-  <%= submit_tag("Search") %>
+</div>
+  <div class = "search-button">
+    <%= submit_tag("Search", class: "button is-primary") %>
+  </div>
+ 
+
 <% end %>

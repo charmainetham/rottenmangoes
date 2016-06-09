@@ -2,16 +2,35 @@
 <html>
   <head>
     <title>RottenTomatoes</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
 </head>
   <body>
+  <nav class="nav">
+  <div class="nav-left">
+    <a class="nav-item" href="#">
+      <img src="http://png.clipart.me/graphics/thumbs/183/mango-polygonal-style-creative-vector-illustration_183470912.jpg" alt="Bulma logo}" height="42" width="42">
+      <h3>ROTTEN MANGOS</h3>
+    </a>
+    <p class= 'submit-movie'><%= link_to "Submit a movie HERE!", new_movie_path, class: "button is-primary is-outlined" %></p>
+    <div class="nav-center">
+          <%= render 'layouts/search_form' %>
+    </div>
+    <div class = "nav-item">
+      <div class = "Log_in">
+      <%= render 'layouts/footer' %>
+      </div>
+    </div>
+
+  </div>
+  </nav>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value) %>
     <% end %>
     <%= yield %>
-    <%= render 'layouts/search_form' %>
-    <%= render 'layouts/footer' %>
+
+    
   </body>
 </html>
